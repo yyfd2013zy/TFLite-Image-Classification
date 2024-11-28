@@ -232,8 +232,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             cameraProvider ?: throw IllegalStateException("Camera initialization failed.")
 
         // CameraSelector - makes assumption that we're only using the back camera
-        //val cameraSelector =
-        //    CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
+         //val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
 
         // create a CameraSelector for the USB camera (or highest level internal camera)
         val cameraSelector = selectExternalOrBestCamera(cameraProvider)
@@ -302,7 +301,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                         it.filter { camInfo ->
                             // cam2Infos[0] is either EXTERNAL or best built-in camera
                             val thisCamId = Camera2CameraInfo.from(camInfo).cameraId
-                            thisCamId == cam2Infos[2 ].cameraId
+                            thisCamId == cam2Infos[0].cameraId
                         }
                     }.build()
             }

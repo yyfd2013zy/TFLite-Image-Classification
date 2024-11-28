@@ -38,7 +38,7 @@
         tools:ignore="AllowBackup">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".CameraTextureTestActivity"
             android:clearTaskOnLaunch="true"
             android:theme="@style/AppTheme"
             android:exported="true"

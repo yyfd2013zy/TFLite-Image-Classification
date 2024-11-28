@@ -30,7 +30,7 @@ import org.tensorflow.lite.task.vision.detector.ObjectDetector
 class ObjectDetectorHelper(
   var threshold: Float = 0.5f,
   var numThreads: Int = 2,
-  var maxResults: Int = 3,
+  var maxResults: Int = 10,
   var currentDelegate: Int = 0,
   var currentModel: Int = 0,
   val context: Context,
@@ -74,6 +74,7 @@ class ObjectDetectorHelper(
                 } else {
                     objectDetectorListener?.onError("GPU is not supported on this device")
                 }
+                baseOptionsBuilder.useGpu()
             }
             DELEGATE_NNAPI -> {
                 baseOptionsBuilder.useNnapi()
@@ -93,7 +94,7 @@ class ObjectDetectorHelper(
 
         try {
             objectDetector =
-                ObjectDetector.createFromFileAndOptions(context, "kad.tflite", optionsBuilder.build())
+                ObjectDetector.createFromFileAndOptions(context, "kad_plante_mode_v1_1.tflite", optionsBuilder.build())
         } catch (e: IllegalStateException) {
             objectDetectorListener?.onError(
                 "Object detector failed to initialize. See error logs for details"
